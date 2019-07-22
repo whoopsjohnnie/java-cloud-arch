@@ -1,4 +1,4 @@
-package tomcat_boot.tomcat_boot;
+package org.name;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
