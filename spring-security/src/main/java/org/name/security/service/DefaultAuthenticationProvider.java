@@ -1,4 +1,4 @@
-package org.name.security.provider;
+package org.name.security.service;
 
 import java.util.ArrayList;
 import java.util.List;
