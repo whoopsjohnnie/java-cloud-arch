@@ -14,9 +14,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomAuthenticationProvider implements AuthenticationProvider {
+public class DefaultAuthenticationProvider implements AuthenticationProvider {
 
-    public CustomAuthenticationProvider() {
+    public DefaultAuthenticationProvider() {
         super();
     }
 
