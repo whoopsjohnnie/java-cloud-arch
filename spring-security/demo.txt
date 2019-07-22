@@ -3,3 +3,43 @@
 > mvn compile
 > mvn spring-boot:run
 
+
+
+> http -a my-client:my-secret --form POST http://localhost:8080/oauth/token username='admin' password='adminpwd' grant_type='password'
+HTTP/1.1 200 
+Cache-Control: no-store
+Content-Type: application/json;charset=UTF-8
+Date: Mon, 22 Jul 2019 23:57:14 GMT
+Pragma: no-cache
+Transfer-Encoding: chunked
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-XSS-Protection: 1; mode=block
+
+{
+    "access_token": "4e4e2a47-8ceb-4e5e-91de-ad884c691f18",
+    "refresh_token": "f84fe933-c1d4-4c6b-b761-19fe50174567",
+    "scope": "read write trust",
+    "token_type": "bearer"
+}
+
+
+
+> http -a my-client:my-secret --form POST http://localhost:8080/oauth/token username='user' password='userpwd' grant_type='password'
+HTTP/1.1 200 
+Cache-Control: no-store
+Content-Type: application/json;charset=UTF-8
+Date: Mon, 22 Jul 2019 23:57:27 GMT
+Pragma: no-cache
+Transfer-Encoding: chunked
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-XSS-Protection: 1; mode=block
+
+{
+    "access_token": "b631adce-b405-4bae-a8ec-5fc2bc0ea766",
+    "refresh_token": "5f5bdef1-db19-4ba3-8d9a-79aee18d56e3",
+    "scope": "read write trust",
+    "token_type": "bearer"
+}
+

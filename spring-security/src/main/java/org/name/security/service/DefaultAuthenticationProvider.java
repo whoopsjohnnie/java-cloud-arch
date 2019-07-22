@@ -1,43 +1,42 @@
 package org.name.security.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-@Component
 public class DefaultAuthenticationProvider implements AuthenticationProvider {
 
-    public DefaultAuthenticationProvider() {
-        super();
-    }
+	public DefaultAuthenticationProvider() {
+	}
 
-    @Override
-    public Authentication authenticate(final Authentication authentication) throws AuthenticationException {
-        final String name = authentication.getName();
-        final String password = authentication.getCredentials().toString();
-        if (name.equals("admin") && password.equals("system")) {
-            final List<GrantedAuthority> grantedAuths = new ArrayList<>();
-            grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
-            final UserDetails principal = new User(name, password, grantedAuths);
-            final Authentication auth = new UsernamePasswordAuthenticationToken(principal, password, grantedAuths);
-            return auth;
-        } else {
-            return null;
-        }
-    }
+	@Override
+	public Authentication authenticate(final Authentication authentication) throws AuthenticationException {
 
-    @Override
-    public boolean supports(final Class<?> authentication) {
-        return authentication.equals(UsernamePasswordAuthenticationToken.class);
-    }
+		if ("admin".equalsIgnoreCase(authentication.getName())) {
+			return new UsernamePasswordAuthenticationToken(
+					"admin", 
+					"{noop}" + "adminpwd",
+					Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN")));
+
+		} else if ("user".equalsIgnoreCase(authentication.getName())) {
+			return new UsernamePasswordAuthenticationToken(
+					"user", 
+					"{noop}" + "userpwd",
+					Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")));
+
+		}
+
+		throw new UsernameNotFoundException("No such user or password.");
+	}
+
+	@Override
+	public boolean supports(final Class<?> authentication) {
+		return authentication.equals(UsernamePasswordAuthenticationToken.class);
+	}
 
 }
