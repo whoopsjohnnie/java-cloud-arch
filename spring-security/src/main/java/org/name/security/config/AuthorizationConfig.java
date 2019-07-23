@@ -11,7 +11,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
 
 	private static final String AUTH_CLIENT_ID = "org.name.client1";
 	private static final String AUTH_CLIENT_SECRET = "{noop}secret";
@@ -25,7 +25,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	private static final int VALID_FOREVER = -1;
 
 	@Autowired
-	private AuthenticationManager authManager;
+	private AuthenticationManager authenticationManager;
 
 	@Autowired
 	private TokenStore tokenStore;
@@ -40,7 +40,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-		endpoints.tokenStore(tokenStore).authenticationManager(authManager);
+		endpoints.tokenStore(tokenStore).authenticationManager(authenticationManager);
 	}
 
 }
