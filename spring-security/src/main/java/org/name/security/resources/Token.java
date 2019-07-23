@@ -13,20 +13,18 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(
-        value = {"/oauth"},
-        produces = MediaType.APPLICATION_JSON_VALUE
-)
+@RequestMapping(value = { "/oauth" }, produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
 public class Token {
 
-    @Autowired
-    private DefaultTokenServices tokenServices;
+	@Autowired
+	private DefaultTokenServices tokenServices;
 
-    @RequestMapping(method = RequestMethod.DELETE, path = "/revoke")
-    @ResponseStatus(HttpStatus.OK)
-    public void revokeToken(Authentication authentication) {
-        final String userToken = ((OAuth2AuthenticationDetails) authentication.getDetails()).getTokenValue();
-        tokenServices.revokeToken(userToken);
-    }
+	@RequestMapping(method = RequestMethod.DELETE, path = "/revoke")
+	@ResponseStatus(HttpStatus.OK)
+	public void revokeToken(Authentication authentication) {
+		final String userToken = ((OAuth2AuthenticationDetails) authentication.getDetails()).getTokenValue();
+		tokenServices.revokeToken(userToken);
+	}
+
 }

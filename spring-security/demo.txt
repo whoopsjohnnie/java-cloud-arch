@@ -5,7 +5,7 @@
 
 
 
-> http -a my-client:my-secret --form POST http://localhost:8080/oauth/token username='admin' password='adminpwd' grant_type='password'
+> http -a org.name.client1:secret --form POST http://localhost:8080/oauth/token username='admin' password='adminpwd' grant_type='password'
 HTTP/1.1 200 
 Cache-Control: no-store
 Content-Type: application/json;charset=UTF-8
@@ -25,7 +25,7 @@ X-XSS-Protection: 1; mode=block
 
 
 
-> http -a my-client:my-secret --form POST http://localhost:8080/oauth/token username='user' password='userpwd' grant_type='password'
+> http -a org.name.client1:secret --form POST http://localhost:8080/oauth/token username='user' password='userpwd' grant_type='password'
 HTTP/1.1 200 
 Cache-Control: no-store
 Content-Type: application/json;charset=UTF-8
