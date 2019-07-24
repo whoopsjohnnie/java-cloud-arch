@@ -2,19 +2,19 @@
 
 # Standard
 > docker build --build-arg WAR_FILE=./sample.war -t org.name/tomcat:latest .
-> docker run -p 8082:8080 org.name/tomcat:latest
+> docker run -p 8080:8080 org.name/tomcat:latest
 
 # Config
 > docker build -f Dockerfile.config --build-arg CONFIG_FILE=... --build-arg WAR_FILE=./sample.war -t org.name/tomcat:latest .
-> docker run -p 8082:8080 org.name/tomcat:latest
+> docker run -p 8080:8080 org.name/tomcat:latest
 
 
 # Clustering
 
 ### Members
+> docker run -p 8081:8080 org.name/tomcat:latest
 > docker run -p 8082:8080 org.name/tomcat:latest
 > docker run -p 8083:8080 org.name/tomcat:latest
-> docker run -p 8084:8080 org.name/tomcat:latest
 
 
 ### Member 1 logs

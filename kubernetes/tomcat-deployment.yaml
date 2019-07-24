@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose --file docker-compose.k8s.yaml convert
+    kompose.version: 1.18.0 (06a2e56)
+  creationTimestamp: null
+  labels:
+    app: orgname
+    io.kompose.service: tomcat
+  name: tomcat
+  namespace: orgname
+spec:
+  replicas: 3
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: tomcat
+    spec:
+      containers:
+      - image: org.name/tomcat:latest
+        imagePullPolicy: IfNotPresent
+        name: tomcat
+        ports:
+        - containerPort: 8080
+        resources: {}
+      restartPolicy: Always
+status: {}
