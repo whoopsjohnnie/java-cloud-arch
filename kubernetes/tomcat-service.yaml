@@ -11,6 +11,9 @@ metadata:
   name: tomcat
   namespace: orgname
 spec:
+  type: LoadBalancer
+  loadBalancerSourceRanges:
+  - 0.0.0.0/0
   ports:
   - name: "8080"
     port: 8080
