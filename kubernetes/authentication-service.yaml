@@ -11,9 +11,12 @@ metadata:
   name: authentication
   namespace: orgname
 spec:
+  type: LoadBalancer
+  loadBalancerSourceRanges:
+  - 0.0.0.0/0
   ports:
-  - name: "8080"
-    port: 8080
+  - name: "8088"
+    port: 8088
     targetPort: 8080
   selector:
     io.kompose.service: authentication

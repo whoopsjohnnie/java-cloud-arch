@@ -6,8 +6,10 @@
 orgname       Active    1m
 ...
 
-> kubectl get all --namespace=orgname
-...
+> kubectl get service --namespace=orgname
+NAME             TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+authentication   LoadBalancer   10.107.184.219   localhost     8088:32680/TCP   20s
+tomcat           LoadBalancer   10.98.9.107      localhost     8080:32214/TCP   19s
 
 > kubectl get pods --namespace=orgname
 NAME                              READY     STATUS    RESTARTS   AGE
