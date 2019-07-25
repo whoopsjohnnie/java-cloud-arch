@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kompose.cmd: kompose --file docker-compose.k8s.yaml convert
+    kompose.version: 1.18.0 (06a2e56)
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  creationTimestamp: null
+  labels:
+    app: orgname
+    io.kompose.service: tomcat
+  name: tomcat
+  namespace: orgname
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /tomcat
+        backend:
+          serviceName: tomcat
+          servicePort: 8080
