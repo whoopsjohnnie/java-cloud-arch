@@ -22,8 +22,18 @@ set -x
 # sudo mkdir -p /maven
 # sudo chmod a+rwx /maven
 
-MAVEN_VERSION="3.5.4" # "3.6.3" # "3.8.4"
-JAVA_VERSION="jdk-8" # "openjdk-8" # "openjdk-11"
+# MAVEN_VERSION="3.5.4" #
+# JAVA_VERSION="jdk-8" # 1.8.0_181, 1.8.0_322
+
+MAVEN_VERSION="3.6.1" #
+JAVA_VERSION="jdk-8" # 1.8.0_222, 1.8.0_221
+
+# MAVEN_VERSION="3.6.3" #
+# JAVA_VERSION="jdk-8" # 1.8.0.92, 1.8.0.275, 1.8.0_282
+
+# MAVEN_VERSION="3.8.4" #
+# JAVA_VERSION="jdk-8" # 1.8.0_312
+
 IMAGE="maven:${MAVEN_VERSION}-${JAVA_VERSION}"
 
 mkdir -p /maven/repo
